@@ -66,8 +66,18 @@ body{background:radial-gradient(ellipse at 8% 0%,#e4ebdf 0,transparent 34%),radi
 #badges .taskicon{font-size:22px}
 @media(min-width:420px){.app{padding-left:24px;padding-right:24px}.welcome h2{font-size:39px}}
 
+
+/* Iconografía orgánica Brillia */
+.mark{color:#55765d;background:linear-gradient(145deg,#d5e4d1,#eee6f0);box-shadow:0 6px 16px #607a601f}
+.nav button{gap:5px;min-width:56px;padding:6px 3px;transition:color .18s,background .18s}
+.nav .navicon{width:35px;height:31px;display:grid;place-items:center;border-radius:12px;color:#78917a;transition:background .18s,color .18s,transform .18s}
+.nav .navicon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.nav button.active{color:#496a51;background:transparent}
+.nav button.active .navicon{background:#e4ecdf;color:#4f7657;transform:translateY(-1px)}
+.nav button.active .navicon svg{stroke-width:1.9}
+
 </style></head><body><main class="app">
-<header class="top"><div class="brand"><div class="mark">✧</div><div><h1>Brillia</h1><small>Un hogar en armonía</small></div></div><span class="tag">Mi hogar</span></header>
+<header class="top"><div class="brand"><div class="mark" aria-label="Brillia"><svg viewBox="0 0 48 48" width="29" height="29" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22.5 24 9l17 13.5"/><path d="M12 20.5V39h24V20.5"/><path d="M20 39V27h8v12"/><path d="M34 12.5V8h4v7.7"/></svg></div><div><h1>Brillia</h1><small>Un hogar en armonía</small></div></div><span class="tag">Mi hogar</span></header>
 <section class="panel active" id="home"><div class="welcome"><div class="eyebrow" id="todayLabel">TU ESPACIO, TU RITMO</div><h2>Un día más para<br>hacerlo brillar.</h2><p>Pequeños pasos crean un hogar en armonía.</p></div>
 <div class="hero"><div class="herohead"><div><h3>Tu semana en equilibrio</h3><p id="heroText">Cada tarea cuenta. ¡Vamos poco a poco!</p></div><div class="score">✦ <b id="score">0</b> pts</div></div><div class="progress"><span id="progress"></span></div><div class="progresslabel"><span id="completedText">0 tareas completadas</span><span id="percent">0%</span></div></div>
 <div class="section"><h3>Para hoy</h3><span class="muted" id="taskCount"></span></div><div class="tasklist" id="todayTasks"></div><div class="quick"><div><b id="quickDone">0</b><span>Completadas hoy</span></div><div><b id="quickLeft">0</b><span>Pendientes</span></div><div><b id="quickPoints">0</b><span>Puntos semana</span></div></div><div class="section"><h3>Un consejo para ti</h3></div><div class="tip" id="homeTip"></div></section>
@@ -75,7 +85,7 @@ body{background:radial-gradient(ellipse at 8% 0%,#e4ebdf 0,transparent 34%),radi
 <section class="panel" id="tasks"><div class="welcome"><div class="eyebrow">CADA COSA EN SU LUGAR</div><h2>Áreas y tareas</h2><p>Una propuesta inicial para empezar hoy.</p></div><div class="tasklist" id="allTasks"></div><div class="family"><h4>En familia</h4><p>Brillia está pensada para compartir las tareas y repartirlas entre todos. La sincronización entre móviles y los perfiles familiares se añadirán al conectar Supabase.</p></div></section>
 <section class="panel" id="achievements"><div class="welcome"><div class="eyebrow">CADA AVANCE CUENTA</div><h2>Mis logros</h2><p>Reconoce todo lo que has conseguido esta semana.</p></div><div class="hero"><div class="herohead"><div><h3 id="level">Semilla de armonía</h3><p>Objetivo semanal: 100 puntos</p></div><div class="score">✦ <b id="achScore">0</b></div></div><div class="progress"><span id="achProgress"></span></div></div><div class="tasklist" id="badges"></div></section>
 <section class="panel" id="tips"><div class="welcome"><div class="eyebrow">IDEAS QUE TE LO PONEN FÁCIL</div><h2>Consejos Brillia</h2><p>Trucos sencillos para cuidar tu hogar.</p></div><div id="tipsList"></div></section>
-</main><nav class="nav"><button class="active" data-page="home"><span>⌂</span>Inicio</button><button data-page="plan"><span>▦</span>Plan</button><button data-page="tasks"><span>☷</span>Tareas</button><button data-page="achievements"><span>✧</span>Logros</button><button data-page="tips"><span>♡</span>Consejos</button></nav>
+</main><nav class="nav"><button class="active" data-page="home"><span class="navicon"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg></span>Inicio</button><button data-page="plan"><span class="navicon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h7"/></svg></span>Plan</button><button data-page="tasks"><span class="navicon"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg></span>Tareas</button><button data-page="achievements"><span class="navicon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 2.5C19 16.6 12 21 12 21Z"/><path d="M12 5c0-1.5 1-2.5 2.5-3"/></svg></span>Logros</button><button data-page="tips"><span class="navicon"><svg viewBox="0 0 24 24"><path d="M20 4C11 4 5 7.5 5 14a6 6 0 0 0 6 6c6.5 0 9-7 9-16Z"/><path d="M3 21c3-5 7-8 13-11"/></svg></span>Consejos</button></nav>
 <script>
 const tasks=[
 [1,"Ventilar y hacer las camas","Dormitorios","🛏️",[0,1,2,3,4,5,6],3,"Diaria"],
