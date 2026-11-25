@@ -63,9 +63,25 @@ Deno.serve(async (req) => {
 
     if (error) throw new Error(`Error leyendo suscripciones: ${error.message}`);
 
-    const keys = await webpush.importVapidKeys(vapidKeysToJwk(vapidPublic, vapidPrivate), {
-      extractable: false,
-    });
+    const exportedKeys = vapidKeysToJwk(vapidPublic, vapidPrivate);
+    const algorithm = { name: "ECDSA", namedCurve: "P-256" };
+    const [publicKey, privateKey] = await Promise.all([
+      crypto.subtle.importKey(
+        "jwk",
+        exportedKeys.publicKey,
+        algorithm,
+        false,
+        ["verify"],
+      ),
+      crypto.subtle.importKey(
+        "jwk",
+        exportedKeys.privateKey,
+        algorithm,
+        false,
+        ["sign"],
+      ),
+    ]);
+    const keys: CryptoKeyPair = { publicKey, privateKey };
     const appServer = await webpush.ApplicationServer.new({
       contactInformation: vapidSubject,
       vapidKeys: keys,
