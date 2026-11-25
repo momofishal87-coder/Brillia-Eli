@@ -1,1 +1,17 @@
-{"name":"Brillia · Un hogar en armonía","short_name":"Brillia","start_url":"/","display":"standalone","background_color":"#f7f5ef","theme_color":"#f7f5ef","description":"Organiza el cuidado de tu hogar, un día a la vez."}
+{
+  "name": "Brillia · Un hogar en armonía",
+  "short_name": "Brillia",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#f7f5ef",
+  "description": "Organiza el cuidado de tu hogar, un día a la vez.",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
