@@ -119,7 +119,13 @@ body{background:radial-gradient(ellipse at 8% 0%,#e4ebdf 0,transparent 34%),radi
 <header class="top"><div class="brand"><div class="mark" aria-label="Brillia"><svg viewBox="0 0 48 48" width="29" height="29" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 22.5 24 9l17 13.5"/><path d="M12 20.5V39h24V20.5"/><path d="M20 39V27h8v12"/><path d="M34 12.5V8h4v7.7"/></svg></div><div><h1>Brillia</h1><small>Un hogar en armonía</small></div></div><span class="tag">Mi hogar</span></header>
 <section class="panel active" id="home"><div class="welcome"><div class="eyebrow" id="todayLabel">TU ESPACIO, TU RITMO</div><h2>Un día más para<br>hacerlo brillar.</h2><p>Pequeños pasos crean un hogar en armonía.</p></div>
 <div class="hero"><div class="herohead"><div><h3>Tu semana en equilibrio</h3><p id="heroText">Cada tarea cuenta. ¡Vamos poco a poco!</p></div><div class="score">✦ <b id="score">0</b> pts</div></div><div class="progress"><span id="progress"></span></div><div class="progresslabel"><span id="completedText">0 tareas completadas</span><span id="percent">0%</span></div></div>
-<div class="routine-card" id="routineCard" aria-live="polite"></div><div class="section"><h3>Para hoy</h3><span class="muted" id="taskCount"></span></div><div class="tasklist" id="todayTasks"></div><div class="quick"><div><b id="quickDone">0</b><span>Completadas hoy</span></div><div><b id="quickLeft">0</b><span>Pendientes</span></div><div><b id="quickPoints">0</b><span>Puntos semana</span></div></div><div class="section"><h3>Un consejo para ti</h3></div><div class="tip" id="homeTip"></div></section>
+<div class="routine-card" id="routineCard" aria-live="polite"></div>
+<div class="routine-card" id="reminderCard">
+ <div class="routine-top"><div><div class="routine-kicker">RECORDATORIOS BRILLIA</div><h3>Un pequeño aviso a tu hora</h3><p id="pushStatus">Activa los avisos para recibir un recordatorio diario en este móvil.</p></div><div class="routine-symbol">🔔</div></div>
+ <label style="display:block;font-size:11px;color:#657568;font-weight:700;margin:13px 0 8px">Hora del recordatorio</label>
+ <div style="display:flex;gap:9px;align-items:center"><input id="reminderTime" type="time" value="09:00" style="flex:1;min-width:0;border:1px solid #e1e7dc;border-radius:12px;padding:11px;background:#fffdf8;color:#405246;font:inherit"><button class="routine-action" id="enablePush">Activar avisos</button></div>
+ <small style="display:block;margin-top:9px;color:#899389;font-size:10px">Necesitarás permitir las notificaciones del navegador. Los avisos diarios se activarán al completar la configuración del servidor.</small>
+</div><div class="section"><h3>Para hoy</h3><span class="muted" id="taskCount"></span></div><div class="tasklist" id="todayTasks"></div><div class="quick"><div><b id="quickDone">0</b><span>Completadas hoy</span></div><div><b id="quickLeft">0</b><span>Pendientes</span></div><div><b id="quickPoints">0</b><span>Puntos semana</span></div></div><div class="section"><h3>Un consejo para ti</h3></div><div class="tip" id="homeTip"></div></section>
 <section class="panel" id="plan"><div class="welcome"><div class="eyebrow">ORGANIZA TU TIEMPO</div><h2>Tu planificación</h2><p>Un plan flexible para tu hogar.</p></div><div class="tabs" id="planTabs"><button class="active" data-mode="day">Día</button><button data-mode="week">Semana</button><button data-mode="month">Mes</button></div><div class="datebar"><button id="prev">‹</button><strong id="planDate">Hoy</strong><button id="next">›</button></div><div class="muted" id="caption">Tareas previstas para este día</div><button class="primary" id="balanceWeek" style="display:none;width:100%;padding:13px;margin:12px 0 4px;font-size:13px">✦ Equilibrar tareas de la semana</button><div id="monthCalendar" style="display:none;margin-top:14px"></div><div class="tasklist" id="planTasks" style="margin-top:12px"></div></section>
 <section class="panel" id="tasks"><div class="welcome"><div class="eyebrow">CADA COSA EN SU LUGAR</div><h2>Áreas y tareas</h2><p>Organiza cada rincón de tu hogar a tu manera.</p></div>
 <div class="section"><h3>Por estancia</h3></div>
@@ -142,7 +148,7 @@ body{background:radial-gradient(ellipse at 8% 0%,#e4ebdf 0,transparent 34%),radi
 <section class="panel" id="achievements"><div class="welcome"><div class="eyebrow">CADA AVANCE CUENTA</div><h2>Mis logros</h2><p>Reconoce todo lo que has conseguido esta semana.</p></div><div class="hero"><div class="herohead"><div><h3 id="level">Semilla de armonía</h3><p>Objetivo semanal: 100 puntos</p></div><div class="score">✦ <b id="achScore">0</b></div></div><div class="progress"><span id="achProgress"></span></div></div><div class="tasklist" id="badges"></div></section>
 <section class="panel" id="tips"><div class="welcome"><div class="eyebrow">IDEAS QUE TE LO PONEN FÁCIL</div><h2>Consejos Brillia</h2><p>Trucos sencillos para cuidar tu hogar.</p></div><div id="tipsList"></div></section>
 </main><nav class="nav"><button class="active" data-page="home"><span class="navicon"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-6v-7h-4v7H4a1 1 0 0 1-1-1z"/></svg></span>Inicio</button><button data-page="plan"><span class="navicon"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="16" rx="3"/><path d="M8 3v4M16 3v4M4 10h16M8 14h3M8 17h7"/></svg></span>Plan</button><button data-page="tasks"><span class="navicon"><svg viewBox="0 0 24 24"><path d="M9 6h11M9 12h11M9 18h11"/><path d="m3.5 6 1.2 1.2L7 5M3.5 12l1.2 1.2L7 11M3.5 18l1.2 1.2L7 17"/></svg></span>Tareas</button><button data-page="achievements"><span class="navicon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 2.5C19 16.6 12 21 12 21Z"/><path d="M12 5c0-1.5 1-2.5 2.5-3"/></svg></span>Logros</button><button data-page="tips"><span class="navicon"><svg viewBox="0 0 24 24"><path d="M20 4C11 4 5 7.5 5 14a6 6 0 0 0 6 6c6.5 0 9-7 9-16Z"/><path d="M3 21c3-5 7-8 13-11"/></svg></span>Consejos</button></nav>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="/supabase-config.js"></script><script>
 const seed=[
 {id:1,name:"Ventilar y hacer las camas",room:"Dormitorios",icon:"🛏️",frequency:"Diaria",weekday:1,duration:10,difficulty:1,points:3},
 {id:2,name:"Recoger y ordenar estancias",room:"Salón",icon:"🧺",frequency:"Diaria",weekday:1,duration:10,difficulty:1,points:3},
@@ -189,4 +195,41 @@ document.querySelectorAll("#roomFilters button").forEach(b=>b.onclick=()=>{roomF
 document.getElementById("balanceWeek").onclick=balanceWeek;document.getElementById("addTask").onclick=()=>openEditor();document.getElementById("closeEditor").onclick=closeEditor;document.getElementById("saveTask").onclick=saveTask;document.getElementById("deleteTask").onclick=deleteTask;
 document.getElementById("tipsList").innerHTML=tips.map((t,i)=>'<div class="tip"><small>CONSEJO '+(i+1)+'</small><p><strong>'+t[0]+'</strong><br>'+t[1]+'</p></div>').join("");
 render();if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("/sw.js").catch(()=>{}));
+
+let sbClient=null,pushUser=null;
+async function initBrilliaBackend(){
+ try{
+  if(!window.supabase||!window.BRILLIA_SUPABASE_URL||!window.BRILLIA_SUPABASE_PUBLISHABLE_KEY){document.getElementById("pushStatus").textContent="No se pudo cargar la conexión segura.";return}
+  sbClient=window.supabase.createClient(window.BRILLIA_SUPABASE_URL,window.BRILLIA_SUPABASE_PUBLISHABLE_KEY);
+  const {data,error}=await sbClient.auth.getSession();if(error)throw error;
+  if(data.session)pushUser=data.session.user;
+  else {const signed=await sbClient.auth.signInAnonymously();if(signed.error)throw signed.error;pushUser=signed.data.user}
+  const saved=localStorage.getItem("brillia-reminder-time");if(saved)document.getElementById("reminderTime").value=saved;
+  document.getElementById("pushStatus").textContent="Este móvil ya puede vincularse de forma privada a Brillia.";
+ }catch(e){console.error("Brillia backend:",e);document.getElementById("pushStatus").textContent="No se pudo conectar. Comprueba que el acceso anónimo está activado en Supabase."}
+}
+function urlB64ToUint8Array(base64String){const padding="=".repeat((4-base64String.length%4)%4),base64=(base64String+padding).replace(/-/g,"+").replace(/_/g,"/"),raw=atob(base64);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)))}
+async function enableBrilliaPush(){
+ const status=document.getElementById("pushStatus"),button=document.getElementById("enablePush"),time=document.getElementById("reminderTime").value||"09:00";
+ if(!sbClient||!pushUser){status.textContent="Conectando con Brillia. Espera unos segundos y vuelve a intentarlo.";await initBrilliaBackend();return}
+ if(!("serviceWorker"in navigator)||!("PushManager"in window)||!("Notification"in window)){status.textContent="Este navegador no admite notificaciones push. Instala Brillia desde el navegador y vuelve a intentarlo.";return}
+ if(!window.BRILLIA_VAPID_PUBLIC_KEY){status.textContent="La conexión está preparada; falta terminar la configuración segura del servidor push.";return}
+ button.disabled=true;button.textContent="Activando…";
+ try{
+  const permission=await Notification.requestPermission();if(permission!=="granted")throw new Error("No se concedió permiso para las notificaciones.");
+  const reg=await navigator.serviceWorker.ready;
+  let sub=await reg.pushManager.getSubscription();
+  if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:urlB64ToUint8Array(window.BRILLIA_VAPID_PUBLIC_KEY)});
+  const j=sub.toJSON(),{error}=await sbClient.from("push_subscriptions").upsert({user_id:pushUser.id,endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth,reminder_time:time,timezone:Intl.DateTimeFormat().resolvedOptions().timeZone||"Europe/Madrid",enabled:true},{onConflict:"endpoint"});
+  if(error)throw error;
+  localStorage.setItem("brillia-reminder-time",time);
+  status.textContent="Este móvil está registrado. Terminaremos ahora la programación de los avisos diarios.";
+  button.textContent="Avisos activados";
+ }catch(e){console.error(e);status.textContent=e.message||"No se pudo activar el recordatorio.";button.textContent="Reintentar"}
+ finally{button.disabled=false}
+}
+document.getElementById("enablePush").addEventListener("click",enableBrilliaPush);
+document.getElementById("reminderTime").addEventListener("change",e=>localStorage.setItem("brillia-reminder-time",e.target.value));
+
+initBrilliaBackend();
 </script></body></html>
